@@ -156,7 +156,7 @@ const JobsListPage = () => {
 
       <div className="d-flex justify-content-between">
         <div className="d-flex gap-2">
-        <h6 className="text-primary">All</h6>
+        <h6 className="text-primary cursor-pointer">All</h6>
         <h6>Open</h6>
         <h6>Pending Approval</h6>
         <h6>Expired</h6>
