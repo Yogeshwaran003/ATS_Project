@@ -23,6 +23,7 @@ import JobEditPage from './pages/JobEditPage';
 import JobResumesPage from './pages/JobResumesPage';
 import PublicJobDetailsPage from './pages/PublicJobDetailsPage';
 import HomePage from './pages/HomePage';
+import Report from './pages/Report';
 
 // Simple auth check (replace with real auth logic)
 // const isAuthenticated = () => !!localStorage.getItem('token');
@@ -67,7 +68,7 @@ function App() {
       <Route path="/resumes/:resumeId" element={<PrivateRoute><ResumeDetailsPage /></PrivateRoute>} />
       <Route path="/candidates" element={<PrivateRoute><ResumesListPage /></PrivateRoute>} />
       <Route path="/calendar" element={<PrivateRoute><InterviewSchedule /></PrivateRoute>} />
-      <Route path="/reports" element={<PrivateRoute><div className="p-4"><h2>Reports</h2><p>Reports dashboard coming soon.</p></div></PrivateRoute>} />
+      <Route path="/reports" element={<PrivateRoute><Report/></PrivateRoute>} />
       <Route path="/settings" element={<PrivateRoute><div className="p-4"><h2>Settings</h2><p>Settings page coming soon.</p></div></PrivateRoute>} />
       
       {/* Fallback route */}
