@@ -154,6 +154,20 @@ const JobsListPage = () => {
         </tbody>
       </table> */}
 
+      <div className="d-flex justify-content-between">
+        <div className="d-flex gap-2">
+        <h6 className="text-primary">All</h6>
+        <h6>Open</h6>
+        <h6>Pending Approval</h6>
+        <h6>Expired</h6>
+      </div>
+
+      <div className="d-flex gap-2">
+        <div className="p-2" style={{backgroundColor:"#eae9ea"}} >i</div>
+        <div className="p-2" style={{backgroundColor:"#eae9ea"}} >i</div>
+      </div>
+      </div>
+
       {/* job list section section */}
 
       {jobs.map((job) => (
