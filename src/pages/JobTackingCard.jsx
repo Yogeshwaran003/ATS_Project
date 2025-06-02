@@ -25,7 +25,7 @@ const JobTrackingCard = ({
     <div className="card shadow-sm mb-4">
       <div className="card-body">
         <div className="d-flex justify-content-between align-items-start mb-4">
-          <div className="d-flex align-items-center gap-3">
+          <div className="d-flex align-items-center gap-2">
             <div className="bg-light rounded overflow-hidden" style={{ width: '80px', height: '60px' }}>
               <img 
                 src={imageUrl} 
@@ -56,7 +56,7 @@ const JobTrackingCard = ({
             </button>
           </div>
         </div>
-
+        
         <div className="row gap-3 text-center">
           <div className="col rounded-3 p-2"  style={{backgroundColor:"#eae9ea"}}>
             {/* <h4>{stats.applied}</h4> */}
