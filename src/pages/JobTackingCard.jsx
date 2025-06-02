@@ -35,7 +35,7 @@ const JobTrackingCard = ({
             </div>
             <div>
               <h5 className="mb-1">{title}</h5>
-              <span className={`badge rounded-pill ${getStatusColor(status)}`}>
+              <span className={`badge rounded-pill ${getStatusColor(status)} `}>
                 {status}
               </span>
             </div>
@@ -58,27 +58,27 @@ const JobTrackingCard = ({
         </div>
 
         <div className="row gap-3 text-center">
-          <div className="col rounded-3 "  style={{backgroundColor:"#eae9ea"}}>
+          <div className="col rounded-3 p-2"  style={{backgroundColor:"#eae9ea"}}>
             {/* <h4>{stats.applied}</h4> */}
             <h4>{100}</h4>
             <p className="text-muted mb-0">Applied</p>
           </div>
-          <div className="col rounded-3" style={{backgroundColor:"#eae9ea"}}>
+          <div className="col rounded-3 p-2" style={{backgroundColor:"#eae9ea"}}>
             {/* <h4>{stats.underReview}</h4> */}
             <h4>{50}</h4>
             <p className="text-muted mb-0">Under Review</p>
           </div>
-          <div className="col rounded-3" style={{backgroundColor:"#eae9ea"}}>
+          <div className="col rounded-3 p-2" style={{backgroundColor:"#eae9ea"}}>
             {/* <h4>{stats.interviewed}</h4> */}
             <h4>{25}</h4>
             <p className="text-muted mb-0">Interviewed</p>
           </div>
-          <div className="col rounded-3" style={{backgroundColor:"#eae9ea"}}>
+          <div className="col rounded-3 p-2" style={{backgroundColor:"#eae9ea"}}>
             {/* <h4>{stats.offered}</h4> */}
             <h4>{12}</h4>
             <p className="text-muted mb-0">Offered</p>
           </div>
-          <div className="col rounded-3"  style={{backgroundColor:"#eae9ea"}}>
+          <div className="col rounded-3 p-2"  style={{backgroundColor:"#eae9ea"}}>
             {/* <h4>{stats.hired}</h4> */}
             <h4>{6}</h4>
             <p className="text-muted mb-0">Hired</p>
