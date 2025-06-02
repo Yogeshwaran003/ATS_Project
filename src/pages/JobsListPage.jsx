@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import api from '../api/api';
 import { Link } from 'react-router-dom';
+import JobTackingCard from '../pages/JobTackingCard';
 
 const sampleJobs = [
   {
@@ -60,17 +61,7 @@ const JobsListPage = () => {
     <div className="container mt-4">
       <div className="d-flex justify-content-between align-items-center mb-3">
         <h2>Jobs</h2>
-
-        <div className='flex-row'>
-          <button
-            className="btn me-2 btn-outline-secondary"
-            type="button"
-            onClick={() => setShowFilters(!showFilters)}
-            >
-              <i className="bi bi-funnel"></i> Filter
-            </button>
-            <Link to="/jobs/create" className="btn btn-primary">Create New Job</Link>
-        </div>
+        <Link to="/jobs/create" className="btn btn-primary">Create New Job</Link>
       </div>
       {/* <table className="table table-bordered">
         <thead>
@@ -100,6 +91,15 @@ const JobsListPage = () => {
           ))}
         </tbody>
       </table> */}
+
+      {/* job list section section */}
+
+      {jobs.map((job) => (
+          <div key={job.job_id}  >
+            <JobTackingCard title={job.title} status={job.job_type} stats={job.location} />
+          </div>
+        ))}
+
     </div>
   );
 };
