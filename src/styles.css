@@ -1,0 +1,373 @@
+/* Global styles for ATS frontend */
+@import 'bootstrap/dist/css/bootstrap.min.css';
+@import 'bootstrap-icons/font/bootstrap-icons.css';
+
+/* Add your custom global styles below this line */
+
+body {
+  background-color: #f8f9fa;
+}
+
+.card {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  border-radius: 1.25rem;
+}
+
+.navbar-brand {
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+/* Side Navigation Styles */
+.admin-layout {
+  /* min-height: calc(100vh - 72px); // No longer needed if sidenav is full height */
+  min-height: 100vh; /* Ensure layout takes full viewport height */
+  padding-left: 250px; /* Default padding for expanded sidenav */
+  transition: padding-left 0.3s ease-in-out; /* Smooth transition for padding */
+}
+
+.sidenav {
+  width: 250px;
+  /* height: calc(100vh - 72px); // Old height */
+  height: 100vh; /* Full viewport height */
+  position: fixed; /* Changed from sticky to fixed */
+  top: 0; /* Align to the top of the viewport */
+  left: 0; /* Align to the left of the viewport */
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #e9ecef;
+  z-index: 1000;
+}
+
+.sidenav-menu {
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+.sidenav .nav-link {
+  transition: all 0.2s;
+}
+
+.sidenav .nav-link:hover {
+  background-color: #f8f9fa;
+  color: #0d6efd !important;
+}
+
+.sidenav .nav-link.active {
+  font-weight: 500;
+}
+
+.admin-content {
+  padding: 20px;
+  overflow-y: auto;
+}
+
+@media (max-width: 768px) {
+  .admin-layout {
+    padding-left: 70px; /* Padding for collapsed sidenav */
+  }
+  .sidenav {
+    width: 70px;
+  }
+  
+  .sidenav span {
+    display: none;
+  }
+  
+  .sidenav-header div > div { /* Target user name and email */
+    display: none;
+  }
+
+  .sidenav-header img {
+    margin-right: 0 !important; /* Remove margin when text is hidden */
+  }
+  
+  .sidenav .nav-link {
+    justify-content: center;
+    padding: 0.5rem !important;
+  }
+  
+  .sidenav .nav-link i {
+    margin-right: 0 !important;
+    font-size: 1.25rem !important;
+  }
+  
+  .admin-content {
+    padding: 15px;
+  }
+}
+
+/* Career Page Styles */
+.career-bg {
+  background: linear-gradient(120deg, #f8fafc 60%, #e3f0ff 100%);
+  min-height: 100vh;
+  padding-top: 0;
+}
+
+.career-card-hover {
+  min-height: 220px;
+}
+
+.career-card-hover:hover {
+  box-shadow: 0 8px 32px rgba(0, 123, 255, 0.14), 0 2px 8px rgba(0,0,0,0.08);
+  transform: translateY(-6px) scale(1.012);
+  border-color: #0d6efd;
+}
+
+.career-card-hover .btn-success {
+  transition: background 0.2s, color 0.2s;
+}
+
+.career-card-hover:hover .btn-success {
+  background: #198754;
+  color: #fff;
+}
+
+.career-title {
+  font-size: 2.7rem;
+  letter-spacing: 0.5px;
+  margin-bottom: 2.5rem;
+}
+
+.career-card-title {
+  font-size: 1.45rem;
+  font-weight: 700;
+  margin-bottom: 0.2rem;
+}
+
+.career-card-shortdesc {
+  font-size: 1.08rem;
+  min-height: 56px;
+  color: #495057;
+}
+
+.career-badge {
+  font-size: 1rem;
+  padding: 0.45em 0.9em;
+  margin-right: 0.4em;
+  margin-bottom: 0.2em;
+}
+
+.career-badge-main {
+  background: #0d6efd;
+  color: #fff;
+}
+.career-badge-type {
+  background: #198754;
+  color: #fff;
+}
+.career-badge-vac {
+  background: #e9ecef;
+  color: #333;
+  border: 1px solid #dee2e6;
+}
+
+.career-card-footer {
+  font-size: 1.01rem;
+  margin-top: 1.2rem;
+}
+
+.home-hero-bg {
+  background: #fff;
+}
+.home-hero-title {
+  font-size: 3.2rem;
+  letter-spacing: 1px;
+}
+.home-hero-desc {
+  font-size: 1.35rem;
+  color: #495057;
+}
+.home-hero-btn {
+  font-size: 1.15rem;
+  border-radius: 2rem;
+}
+.home-hero-img {
+  max-width: 100%;
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 32px rgba(80, 120, 255, 0.10);
+}
+.suite-section {
+  background: linear-gradient(120deg, #5b6bfa 60%, #4f8cff 100%);
+}
+.suite-section .btn-light {
+  color: #4f8cff;
+  font-weight: 600;
+}
+.suite-section .btn-light:hover {
+  background: #e9ecef;
+}
+
+/* Feature icon */
+.bi {
+  vertical-align: middle;
+}
+
+@media (min-width: 992px) {
+  .home-hero-bg .display-4 {
+    font-size: 2.8rem;
+  }
+  .suite-section h3 {
+    font-size: 2.2rem;
+  }
+}
+@media (min-width: 768px) {
+  .career-title {
+    font-size: 3.1rem;
+  }
+  .career-card-title {
+    font-size: 1.7rem;
+  }
+  .career-card-shortdesc {
+    font-size: 1.13rem;
+  }
+}
+
+/* Testimonial quote mark */
+.display-6.lh-1 {
+  font-size: 2.5rem;
+  line-height: 1;
+  vertical-align: top;
+}
+
+/* Dashboard styles */
+.dashboard-bg {
+  background: #f8f9fb;
+}
+.dashboard-bar {
+  width: 60px;
+  border-radius: 12px 12px 0 0;
+  background: #7b8cff;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  transition: background 0.2s;
+}
+.dashboard-bar-label {
+  position: absolute;
+  top: -28px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #7b8cff;
+  color: #fff;
+  font-size: 0.95rem;
+  padding: 2px 10px;
+  border-radius: 8px;
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(123,140,255,0.08);
+}
+.dashboard-summary-tile {
+  border-radius: 1.1rem;
+  padding: 1.2rem 1rem 1rem 1rem;
+  min-height: 90px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  font-size: 1.1rem;
+  box-shadow: 0 2px 8px rgba(123,140,255,0.04);
+}
+.bg-pink {
+  background: #f85a9a !important;
+}
+
+@media (max-width: 767px) {
+  .dashboard-bar {
+    width: 36px;
+  }
+  .dashboard-bar-label {
+    font-size: 0.8rem;
+    top: -22px;
+  }
+  .dashboard-summary-tile {
+    font-size: 1rem;
+    padding: 0.8rem 0.7rem 0.7rem 0.7rem;
+  }
+}
+
+/* Dashboard Specific Styles */
+.dashboard-bg {
+  background-color: #f4f7fc;
+}
+
+.dashboard-bar {
+  width: 70%; /* Default width */
+  max-width: 50px; /* Max width for larger bars */
+  border-radius: 5px 5px 0 0;
+  position: relative;
+  transition: height 0.3s ease-in-out;
+}
+
+.dashboard-bar-label {
+  position: absolute;
+  top: -20px; /* Position above the bar */
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #333;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 2px 5px;
+  border-radius: 3px;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.dashboard-bar:hover .dashboard-bar-label {
+  opacity: 1;
+}
+
+.pipeline-label {
+  font-size: 0.8rem; /* Smaller label for pipeline stages */
+}
+
+.candidate-pipeline-row {
+  /* Add any specific row styles if needed */
+}
+
+@media (max-width: 767.98px) { /* Medium devices (tablets, less than 768px) */
+  .dashboard-bar {
+    width: 80%;
+    max-width: 40px;
+  }
+  .dashboard-bar-label {
+    font-size: 0.7rem;
+    top: -18px;
+  }
+  .pipeline-label {
+    font-size: 0.75rem;
+  }
+  .candidate-pipeline-row .col-6 {
+    /* Ensure some spacing if bars get too close */
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+}
+
+@media (max-width: 575.98px) { /* Small devices (landscape phones, less than 576px) */
+  .dashboard-bar {
+    width: 90%;
+    max-width: 35px;
+  }
+  .dashboard-bar-label {
+    font-size: 0.65rem;
+    padding: 1px 3px;
+    top: -16px;
+  }
+  .pipeline-label {
+    font-size: 0.7rem;
+  }
+  .card.p-3.p-md-4 {
+    padding: 0.75rem !important; /* Reduce padding further on very small screens */
+  }
+  .candidate-pipeline-row {
+    min-height: 150px !important; /* Adjust min-height for smaller screens */
+  }
+}
+
+.dashboard-summary-tile {
+  font-size: 1rem;
+  padding: 0.8rem 0.7rem 0.7rem 0.7rem;
+}
