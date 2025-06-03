@@ -96,7 +96,7 @@ const Dashboard = () => {
           </div>
           <div className="col-lg-auto col-md-6 mb-2 mb-lg-0"> {/* Takes auto width on lg, 50% on md, stacks below lg */} 
             <button className="btn btn-outline-primary w-100 py-3 d-flex align-items-center justify-content-center gap-2">
-              <i className="bi bi-person-plus fs-4"></i> Add an Employee
+              <i className="bi bi-person-plus fs-4"></i> Add an Employee here
             </button>
           </div>
           <div className="col-lg col-md-12"> {/* Takes remaining space on lg, full width on md and stacks */} 
