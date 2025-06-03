@@ -1,0 +1,71 @@
+/* Breadcrumb Navigation */
+.breadcrumb-nav {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+  gap: 4px;
+}
+
+.breadcrumb-item {
+  color: #6c757d;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.breadcrumb-item:hover {
+  color: #0d6efd;
+}
+
+/* Progress Bar */
+.progress-bar-container {
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.progress-steps {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  height: 40px;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.progress-step {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 500;
+  background: #e9ecef;
+  position: relative;
+  margin-right: 3px;
+}
+
+.progress-step:last-child {
+  margin-right: 0;
+}
+
+.progress-step.applied {
+  background: #0d6efd;
+}
+
+.progress-step.under-review {
+  background: #00bcd4;
+}
+
+.progress-step.interview {
+  background: #ffc107;
+}
+
+.progress-step.offer {
+  background: #28a745;
+}
+
+.progress-step.hire {
+  background: #6c757d;
+} 

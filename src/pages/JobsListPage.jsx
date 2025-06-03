@@ -3,55 +3,48 @@ import api from "../api/api";
 import { Link } from "react-router-dom";
 import JobTackingCard from "../pages/JobTackingCard";
 
-const sampleJobs = [
-  {
-    job_id: "1",
-    title: "Senior Frontend Developer",
-    skill_set: ["React", "JavaScript", "CSS", "HTML", "TypeScript"],
-    location: "Remote",
-    job_type: "Full-time",
-    vacancies: 2,
-  },
-  {
-    job_id: "2",
-    title: "Backend Engineer (Python)",
-    skill_set: ["Python", "Django", "PostgreSQL", "Docker", "AWS"],
-    location: "New York, NY",
-    job_type: "Full-time",
-    vacancies: 1,
-  },
-  {
-    job_id: "3",
-    title: "UX/UI Designer",
-    skill_set: ["Figma", "Adobe XD", "User Research", "Prototyping"],
-    location: "San Francisco, CA",
-    job_type: "Contract",
-    vacancies: 1,
-  },
-  {
-    job_id: "4",
-    title: "DevOps Engineer",
-    skill_set: ["Kubernetes", "Terraform", "Jenkins", "Azure"],
-    location: "Austin, TX",
-    job_type: "Full-time",
-    vacancies: 3,
-  },
-];
-
 const JobsListPage = () => {
   const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [stats, setStats] = useState({
+    openPositions: 0,
+    activeJobs: 0,
+    pendingApproval: 0,
+    expiredPosts: 0
+  });
 
   useEffect(() => {
-    // api.get('/jobs/')
-    //   .then(res => setJobs(res.data))
-    //   .catch(() => setError('Failed to load jobs'))
-    //   .finally(() => setLoading(false));
-    setTimeout(() => {
-      setJobs(sampleJobs);
-      setLoading(false);
-    }, 500); // Simulate loading for 500ms
+    const fetchJobs = async () => {
+      try {
+        setLoading(true);
+        const response = await api.get('/jobs/');
+        setJobs(response.data);
+        
+        // Calculate stats from the fetched data
+        const statsData = response.data.reduce((acc, job) => {
+          if (job.status === 'open') acc.openPositions++;
+          if (job.status === 'active') acc.activeJobs++;
+          if (job.status === 'pending') acc.pendingApproval++;
+          if (job.status === 'expired') acc.expiredPosts++;
+          return acc;
+        }, {
+          openPositions: 0,
+          activeJobs: 0,
+          pendingApproval: 0,
+          expiredPosts: 0
+        });
+        
+        setStats(statsData);
+      } catch (err) {
+        setError('Failed to load jobs. Please try again later.');
+        console.error('Error fetching jobs:', err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchJobs();
   }, []);
 
   if (loading)
@@ -67,9 +60,9 @@ const JobsListPage = () => {
       <div className="d-flex justify-content-between align-items-center mb-3">
         <h2>Jobs</h2>
         <div className="d-flex gap-2">
-          <div class="dropdown">
+          <div className="dropdown">
             <button
-              class="btn btn-outline-secondary dropdown-toggle"
+              className="btn btn-outline-secondary dropdown-toggle"
               type="button"
               id="filterDropdown"
               data-bs-toggle="dropdown"
@@ -77,19 +70,19 @@ const JobsListPage = () => {
             >
               Filter
             </button>
-            <ul class="dropdown-menu" aria-labelledby="filterDropdown">
+            <ul className="dropdown-menu" aria-labelledby="filterDropdown">
               <li>
-                <a class="dropdown-item" href="#">
+                <a className="dropdown-item" href="#">
                   Open
                 </a>
               </li>
               <li>
-                <a class="dropdown-item" href="#">
+                <a className="dropdown-item" href="#">
                   Closed
                 </a>
               </li>
               <li>
-                <a class="dropdown-item" href="#">
+                <a className="dropdown-item" href="#">
                   Draft
                 </a>
               </li>
@@ -101,81 +94,53 @@ const JobsListPage = () => {
         </div>
       </div>
 
-      <div className="card shadow-sm mb-4 ">
-        <div className="d-flex justify-content-around ">
+      <div className="card shadow-sm mb-4">
+        <div className="d-flex justify-content-around p-4">
           <div className="border-end border-2 border-dark pe-5">
             <h5>Open Position</h5>
-            <h3>10</h3>
+            <h3>{stats.openPositions}</h3>
           </div>
 
           <div className="border-end border-2 border-dark pe-5">
             <h5>Active job post</h5>
-            <h3>7</h3>
+            <h3>{stats.activeJobs}</h3>
           </div>
 
           <div className="border-end border-2 border-dark pe-5">
             <h5>Pending Approval</h5>
-            <h3>2</h3>
+            <h3>{stats.pendingApproval}</h3>
           </div>
 
           <div>
             <h5>Expired Posts</h5>
-            <h3>1</h3>
+            <h3>{stats.expiredPosts}</h3>
           </div>
         </div>
       </div>
 
-      {/* <table className="table table-bordered">
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Skills</th>
-            <th>Location</th>
-            <th>Type</th>
-            <th>Vacancies</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {jobs.map(job => (
-            <tr key={job.job_id}>
-              <td>{job.title}</td>
-              <td>{job.skill_set && job.skill_set.join(', ')}</td>
-              <td>{job.location}</td>
-              <td>{job.job_type}</td>
-              <td>{job.vacancies}</td>
-              <td>
-                <Link to={`/jobs/${job.job_id}`} className="btn btn-sm btn-info me-2">View Details</Link>
-                <Link to={`/jobs/${job.job_id}/resumes`} className="btn btn-sm btn-secondary">Resumes</Link>
-                <Link to={`/public/jobs/${job.job_id}`} className="btn btn-sm btn-outline-primary ms-2">Public View</Link>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table> */}
-
       <div className="d-flex justify-content-between">
         <div className="d-flex gap-2">
-        <h6 className="text-primary cursor-pointer">All</h6>
-        <h6>Open</h6>
-        <h6>Pending Approval</h6>
-        <h6>Expired</h6>
+          <h6 className="text-primary cursor-pointer">All</h6>
+          <h6>Open</h6>
+          <h6>Pending Approval</h6>
+          <h6>Expired</h6>
+        </div>
+
+        <div className="d-flex gap-2">
+          <div className="p-2" style={{backgroundColor:"#eae9ea"}} >i</div>
+          <div className="p-2" style={{backgroundColor:"#eae9ea"}} >i</div>
+        </div>
       </div>
 
-      <div className="d-flex gap-2">
-        <div className="p-2" style={{backgroundColor:"#eae9ea"}} >i</div>
-        <div className="p-2" style={{backgroundColor:"#eae9ea"}} >i</div>
-      </div>
-      </div>
-
-      {/* job list section section */}
-
+      {/* job list section */}
       {jobs.map((job) => (
         <div key={job.job_id}>
           <JobTackingCard
             title={job.title}
-            status={job.job_type}
+            jobType={job.job_type}
+            status={job.status}
             stats={job.location}
+            jobId={job.job_id}
           />
         </div>
       ))}

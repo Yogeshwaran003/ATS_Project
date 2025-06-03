@@ -18,7 +18,8 @@ const JobEditPage = () => {
     work_hours: '',
     created_by: '',
     email: '',
-    mobile: ''
+    mobile: '',
+    status: 'open'
   });
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
@@ -42,7 +43,8 @@ const JobEditPage = () => {
           work_hours: job.work_hours || '',
           created_by: job.created_by || '',
           email: job.email || '',
-          mobile: job.mobile || ''
+          mobile: job.mobile || '',
+          status: job.status || 'open'
         });
       })
       .catch(() => setError('Failed to load job details'))
@@ -62,7 +64,7 @@ const JobEditPage = () => {
       await api.put(`/jobs/${jobId}`, {
         ...form,
         short_description: form.short_description,
-        description: form.description, // ensure description is included
+        description: form.description,
         vacancies: parseInt(form.vacancies, 10),
         skill_set: form.skill_set.split(',').map(s => s.trim())
       });
@@ -135,6 +137,20 @@ const JobEditPage = () => {
         <div className="col-md-4">
           <label className="form-label">Mobile</label>
           <input name="mobile" value={form.mobile} onChange={handleChange} className="form-control" />
+        </div>
+        <div className="col-md-4">
+          <label className="form-label">Status</label>
+          <select
+            className="form-select"
+            name="status"
+            value={form.status}
+            onChange={handleChange}
+            required
+          >
+            <option value="open">Open</option>
+            <option value="pending approval">Pending Approval</option>
+            <option value="expired">Expired</option>
+          </select>
         </div>
         <div className="col-12">
           <button type="submit" className="btn btn-primary" disabled={saving}>

@@ -1,24 +1,33 @@
 import React from 'react';
 import { Edit, Eye, Users } from 'lucide-react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Link, useNavigate } from 'react-router-dom';
 
 const JobTrackingCard = ({
   title,
+  jobType,
   status,
   stats,
-  imageUrl = 'https://picsum.photos/200'
+  imageUrl = 'https://picsum.photos/200',
+  jobId
 }) => {
+  const navigate = useNavigate();
+  
   const getStatusColor = (status) => {
-    switch (status) {
-      case 'Open':
-        return 'bg-primary text-white';
-      case 'Closed':
+    switch (status?.toLowerCase()) {
+      case 'open':
+        return 'bg-success text-white';
+      case 'pending approval':
+        return 'bg-warning text-dark';
+      case 'expired':
         return 'bg-danger text-white';
-      case 'Draft':
-        return 'bg-secondary text-white';
       default:
         return 'bg-secondary text-white';
     }
+  };
+
+  const getJobTypeColor = () => {
+    return 'bg-light text-dark';
   };
 
   return (
@@ -35,30 +44,35 @@ const JobTrackingCard = ({
             </div>
             <div>
               <h5 className="mb-1">{title}</h5>
-              <span className={`badge rounded-pill ${getStatusColor(status)} `}>
-                {status}
-              </span>
+              <div className="d-flex gap-2">
+                <span className={`badge rounded-pill ${getJobTypeColor()}`}>
+                  {jobType || 'Full-time'}
+                </span>
+                <span className={`badge rounded-pill ${getStatusColor(status)}`}>
+                  {status || 'Open'}
+                </span>
+              </div>
             </div>
           </div>
 
           <div className="d-flex gap-2">
-            <button className="btn  btn-outline-primary btn-sm d-flex align-items-center gap-1">
+            <Link to={`/jobs/${jobId}/edit`} className="btn btn-outline-primary btn-sm d-flex align-items-center gap-1">
               <Edit size={16} />
               Edit
-            </button>
-            <button className="btn btn-outline-primary btn-sm d-flex align-items-center gap-1">
+            </Link>
+            <Link to={`/public/jobs/${jobId}`} className="btn btn-outline-primary btn-sm d-flex align-items-center gap-1">
               <Eye size={16} />
               View job post
-            </button>
-            <button className="btn  btn-primary btn-sm d-flex align-items-center gap-1">
+            </Link>
+            <Link to={`/jobs/${jobId}/resumes`} className="btn btn-primary btn-sm d-flex align-items-center gap-1">
               <Users size={16} />
               View Candidates
-            </button>
+            </Link>
           </div>
         </div>
         
         <div className="row gap-3 text-center">
-          <div className="col rounded-3 p-2"  style={{backgroundColor:"#eae9ea"}}>
+          <div className="col rounded-3 p-2" style={{backgroundColor:"#eae9ea"}}>
             {/* <h4>{stats.applied}</h4> */}
             <h4>{100}</h4>
             <p className="text-muted mb-0">Applied</p>
@@ -78,7 +92,7 @@ const JobTrackingCard = ({
             <h4>{12}</h4>
             <p className="text-muted mb-0">Offered</p>
           </div>
-          <div className="col rounded-3 p-2"  style={{backgroundColor:"#eae9ea"}}>
+          <div className="col rounded-3 p-2" style={{backgroundColor:"#eae9ea"}}>
             {/* <h4>{stats.hired}</h4> */}
             <h4>{6}</h4>
             <p className="text-muted mb-0">Hired</p>

@@ -1,0 +1,114 @@
+/* Timeline Styles */
+.timeline {
+  padding-left: 1rem;
+}
+
+.timeline-item {
+  position: relative;
+}
+
+.timeline-dot {
+  transition: background-color 0.3s ease;
+}
+
+.timeline-dot.active {
+  animation: dotGlow 3s infinite;
+}
+
+@keyframes dotGlow {
+  0%, 100% {
+    background-color: #e9ecef;
+    box-shadow: none;
+  }
+  50% {
+    background-color: #0d6efd;
+    box-shadow: 0 0 8px 2px rgba(13, 110, 253, 0.4);
+  }
+}
+
+.timeline-line {
+  position: absolute;
+  width: 2px;
+  background-color: #e9ecef;
+  overflow: hidden;
+}
+
+/* Sequential glowing animation for dots */
+.timeline-item:nth-child(3) .timeline-dot {
+  animation: dotGlow 3s infinite;
+  animation-delay: 0s;
+}
+
+.timeline-item:nth-child(2) .timeline-dot {
+  animation: dotGlow 3s infinite;
+  animation-delay: 1s;
+}
+
+.timeline-item:nth-child(1) .timeline-dot {
+  animation: dotGlow 3s infinite;
+  animation-delay: 2s;
+}
+
+/* Line glow effect */
+.timeline-line::after {
+  content: '';
+  position: absolute;
+  width: 2px;
+  height: 200%;
+  background: linear-gradient(
+    to top,
+    transparent 0%,
+    #0d6efd 40%,
+    #0d6efd 60%,
+    transparent 100%
+  );
+  top: -200%;
+  left: 0;
+  animation: moveGlowUp 3s infinite;
+  animation-timing-function: linear;
+}
+
+/* Sequential line glow timing */
+.timeline-item:nth-child(3) .timeline-line::after {
+  animation-delay: 0s;
+}
+
+.timeline-item:nth-child(2) .timeline-line::after {
+  animation-delay: 1s;
+}
+
+@keyframes moveGlowUp {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0%);
+    opacity: 0;
+  }
+}
+
+.timeline-item:hover .timeline-dot {
+  background-color: #0d6efd;
+  box-shadow: 0 0 0 4px rgba(13, 110, 253, 0.2);
+}
+
+/* Badge animation */
+.badge-working {
+  animation: workingPulse 2s infinite;
+}
+
+@keyframes workingPulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+} 
