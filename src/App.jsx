@@ -25,6 +25,12 @@ import JobEditPage from './pages/JobEditPage';
 import JobResumesPage from './pages/JobResumesPage';
 import PublicJobDetailsPage from './pages/PublicJobDetailsPage';
 import HomePage from './pages/HomePage';
+import PipeLineReport from './pages/PipeLineReport';
+import QualityReport from './pages/QualityReport';
+import DiversityCandidateReport from './pages/DiversityCandidateReport';
+import PerformanceReport from './pages/PerformanceReport';
+import AttendanceReport from './pages/AttendanceReport';
+import EngagementReport from './pages/EngagementReport';
 
 // Simple auth check (replace with real auth logic)
 // const isAuthenticated = () => !!localStorage.getItem('token');
@@ -71,6 +77,12 @@ function App() {
       <Route path="/candidates" element={<PrivateRoute><ResumesListPage /></PrivateRoute>} />
       <Route path="/calendar" element={<PrivateRoute><InterviewSchedule /></PrivateRoute>} />
       <Route path="/reports" element={<PrivateRoute><Report/></PrivateRoute>} />
+      <Route path="/reports/pipeline" element={<PrivateRoute><PipeLineReport /></PrivateRoute>} />
+      <Route path="/reports/quality" element={<PrivateRoute><QualityReport /></PrivateRoute>} />
+      <Route path="/reports/diversity" element={<PrivateRoute><DiversityCandidateReport /></PrivateRoute>} />
+      <Route path="/reports/performance" element={<PrivateRoute><PerformanceReport /></PrivateRoute>} />
+      <Route path="/reports/attendance" element={<PrivateRoute><AttendanceReport /></PrivateRoute>} />
+      <Route path="/reports/engagement" element={<PrivateRoute><EngagementReport /></PrivateRoute>} />
       <Route path="/settings" element={<PrivateRoute><div className="p-4"><h2>Settings</h2><p>Settings page coming soon.</p></div></PrivateRoute>} />
       
       {/* Fallback route */}
