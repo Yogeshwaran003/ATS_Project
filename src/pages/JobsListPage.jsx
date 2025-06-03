@@ -6,7 +6,7 @@ import JobTackingCard from "../pages/JobTackingCard";
 const sampleJobs = [
   {
     job_id: "1",
-    title: "Senior Frontend Developer",
+    title: "Senior  Frontend Developer",
     skill_set: ["React", "JavaScript", "CSS", "HTML", "TypeScript"],
     location: "Remote",
     job_type: "Full-time",
@@ -155,7 +155,7 @@ const JobsListPage = () => {
       </table> */}
 
       <div className="d-flex justify-content-between">
-        <div className="d-flex gap-2">
+        <div className="d-flex gap-3">
         <h6 className="text-primary cursor-pointer">All</h6>
         <h6>Open</h6>
         <h6>Pending Approval</h6>
