@@ -24,7 +24,8 @@ const LoginPage = ({ onLogin }) => {
     } catch {
       setError('Invalid credentials');
     } finally {
-      setLoading(false);
+      // setLoading(false);
+      navigate('/jobs');
     }
   };
 

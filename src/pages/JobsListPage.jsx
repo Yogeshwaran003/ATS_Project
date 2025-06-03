@@ -3,6 +3,41 @@ import api from "../api/api";
 import { Link } from "react-router-dom";
 import JobTackingCard from "../pages/JobTackingCard";
 
+const sampleJobs = [
+  {
+    job_id: "1",
+    title: "Senior Frontend Developer",
+    skill_set: ["React", "JavaScript", "CSS", "HTML", "TypeScript"],
+    location: "Remote",
+    job_type: "Full-time",
+    vacancies: 2,
+  },
+  {
+    job_id: "2",
+    title: "Backend Engineer (Python)",
+    skill_set: ["Python", "Django", "PostgreSQL", "Docker", "AWS"],
+    location: "New York, NY",
+    job_type: "Full-time",
+    vacancies: 1,
+  },
+  {
+    job_id: "3",
+    title: "UX/UI Designer",
+    skill_set: ["Figma", "Adobe XD", "User Research", "Prototyping"],
+    location: "San Francisco, CA",
+    job_type: "Contract",
+    vacancies: 1,
+  },
+  {
+    job_id: "4",
+    title: "DevOps Engineer",
+    skill_set: ["Kubernetes", "Terraform", "Jenkins", "Azure"],
+    location: "Austin, TX",
+    job_type: "Full-time",
+    vacancies: 3,
+  },
+];
+
 const JobsListPage = () => {
   const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -120,11 +155,11 @@ const JobsListPage = () => {
 
       <div className="d-flex justify-content-between">
         <div className="d-flex gap-2">
-          <h6 className="text-primary cursor-pointer">All</h6>
-          <h6>Open</h6>
-          <h6>Pending Approval</h6>
-          <h6>Expired</h6>
-        </div>
+        <h6 className="text-primary cursor-pointer">All</h6>
+        <h6>Open</h6>
+        <h6>Pending Approval</h6>
+        <h6>Expired</h6>
+      </div>
 
         <div className="d-flex gap-2">
           <div className="p-2" style={{backgroundColor:"#eae9ea"}} >i</div>
