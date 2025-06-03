@@ -8,6 +8,7 @@ import AdminLayout from './components/AdminLayout';
 // Import pages (to be implemented)
 import LoginPage from './pages/LoginPage';
 import Dashboard from './pages/Dashboard';
+import CandidateDetailsPage from './pages/CandidateDetailsPage';
 import JobCreate from './pages/JobCreate';
 import Career from './pages/Career';
 import JobApplyPage from './pages/JobApplyPage';
@@ -15,6 +16,7 @@ import ResumeIntakePage from './pages/ResumeIntakePage';
 import InterviewSchedule from './pages/InterviewSchedule';
 import InterviewFeedback from './pages/InterviewFeedback';
 import OfferPage from './pages/OfferPage';
+import Report from './pages/Report';
 import JobsListPage from './pages/JobsListPage';
 import ResumesListPage from './pages/ResumesListPage';
 import ResumeDetailsPage from './pages/ResumeDetailsPage';
